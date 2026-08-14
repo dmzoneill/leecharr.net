@@ -47,12 +47,9 @@ window.addEventListener('scroll', function() {
     setTimeout(function() { lbImg.src = ''; }, 200);
   }
 
-  // Open on carousel image click
-  document.addEventListener('click', function(e) {
-    var img = e.target.closest('.carousel-img');
-    if (img) {
-      openLightbox(img.dataset.full || img.src, img.alt);
-    }
+  // Open on carousel image click (jQuery delegation — reliable with Bootstrap 3)
+  $(document).on('click', '.carousel-img', function() {
+    openLightbox($(this).data('full') || this.src, this.alt);
   });
 
   // Close via button, overlay click, or Escape
