@@ -27,14 +27,40 @@ window.addEventListener('scroll', function() {
   });
 });
 
-// Lightbox — Bootstrap modal
-$(document).on('click', '.carousel-img', function() {
-  var src = $(this).data('full') || this.src;
-  $('#lightboxImg').attr('src', src).attr('alt', $(this).attr('alt') || '');
-  $('#lightboxModal').modal('show');
-});
+// Lightbox — plain jQuery, no Bootstrap modal API
+$(function() {
+  var $overlay = $('#lightboxOverlay');
+  var $img     = $('#lightboxImg');
 
-// Clear src when modal closes (avoids flash of old image on next open)
-$('#lightboxModal').on('hidden.bs.modal', function() {
-  $('#lightboxImg').attr('src', '');
+  function openLightbox(src, alt) {
+    $img.attr('src', src).attr('alt', alt || '');
+    $overlay.fadeIn(180);
+    $('body').css('overflow', 'hidden');
+  }
+
+  function closeLightbox() {
+    $overlay.fadeOut(150, function() {
+      $img.attr('src', '');
+    });
+    $('body').css('overflow', '');
+  }
+
+  // Open on slide image click
+  $(document).on('click', '.carousel-img', function(e) {
+    e.stopPropagation();
+    var src = $(this).attr('data-full') || this.src;
+    openLightbox(src, $(this).attr('alt'));
+  });
+
+  // Close: button, overlay background, Escape
+  $('#lightboxClose').on('click', closeLightbox);
+  $overlay.on('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+  $(document).on('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Prevent click on the image itself from closing
+  $img.on('click', function(e) { e.stopPropagation(); });
 });
