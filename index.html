@@ -372,6 +372,107 @@
       .feature-visual { flex: none; width: 100%; }
     }
 
+    /* ─── Screenshots / Carousel ─── */
+    #screenshots {
+      padding: 80px 0 60px;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-light);
+    }
+    .seedarr-carousel {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--bg-dark);
+    }
+    .carousel-img {
+      width: 800px;
+      height: auto;
+      display: block;
+      cursor: zoom-in;
+      transition: opacity 0.15s;
+    }
+    .carousel-img:hover { opacity: 0.88; }
+    .seedarr-indicators { bottom: 10px; }
+    .seedarr-indicators li {
+      background: var(--text-dim);
+      border: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin: 0 4px;
+    }
+    .seedarr-indicators li.active { background: var(--accent); }
+    .seedarr-control {
+      background: none !important;
+      width: 44px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .seedarr-carousel:hover .seedarr-control { opacity: 1; }
+    .seedarr-control i {
+      font-size: 18px;
+      color: var(--accent);
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .left.seedarr-control i  { left: 12px; }
+    .right.seedarr-control i { right: 12px; }
+    .carousel-hint {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .carousel-hint i { margin-right: 5px; color: var(--accent); }
+
+    /* ─── Lightbox ─── */
+    .lightbox-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0,0,0,0.92);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      animation: lbFade 0.18s ease;
+    }
+    .lightbox-overlay.open { display: flex; }
+    @keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+    #lightboxImg {
+      max-width: 95vw;
+      max-height: 92vh;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 48px rgba(0,0,0,0.7);
+      cursor: default;
+      display: block;
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 24px;
+      line-height: 1;
+      width: 38px;
+      height: 38px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s, border-color 0.15s;
+      z-index: 10000;
+    }
+    .lightbox-close:hover { color: var(--accent); border-color: var(--accent-border); }
+
     /* ─── hljs override ─── */
     .hljs { background: transparent !important; }
   </style>
@@ -396,6 +497,7 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#hero"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="#screenshots"><i class="fas fa-images"></i> Screenshots</a></li>
         <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
         <li><a href="#download"><i class="fas fa-download"></i> Download</a></li>
         <li><a href="https://wiki.servarr.com/" target="_blank" rel="noopener"><i class="fas fa-question-circle"></i> Support</a></li>
@@ -456,6 +558,63 @@
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════════════ SCREENSHOTS ═══════════════════════════════ -->
+<section id="screenshots">
+  <div class="container">
+    <div class="section-header">
+      <h2>See it in <span>Action</span></h2>
+      <div class="divider"></div>
+    </div>
+
+    <div id="screenshotCarousel" class="carousel slide seedarr-carousel" data-ride="carousel" data-interval="4000">
+
+      <!-- Indicators -->
+      <ol class="carousel-indicators seedarr-indicators">
+        <li data-target="#screenshotCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#screenshotCarousel" data-slide-to="1"></li>
+        <li data-target="#screenshotCarousel" data-slide-to="2"></li>
+        <li data-target="#screenshotCarousel" data-slide-to="3"></li>
+        <li data-target="#screenshotCarousel" data-slide-to="4"></li>
+      </ol>
+
+      <!-- Slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="img/slides/screen-1.png" alt="Seedarr screenshot 1" data-full="img/screen-1.png" class="carousel-img">
+        </div>
+        <div class="item">
+          <img src="img/slides/screen-2.png" alt="Seedarr screenshot 2" data-full="img/screen-2.png" class="carousel-img">
+        </div>
+        <div class="item">
+          <img src="img/slides/screen-3.png" alt="Seedarr screenshot 3" data-full="img/screen-3.png" class="carousel-img">
+        </div>
+        <div class="item">
+          <img src="img/slides/screen-4.png" alt="Seedarr screenshot 4" data-full="img/screen-4.png" class="carousel-img">
+        </div>
+        <div class="item">
+          <img src="img/slides/screen-5.png" alt="Seedarr screenshot 5" data-full="img/screen-5.png" class="carousel-img">
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control seedarr-control" href="#screenshotCarousel" data-slide="prev">
+        <i class="fas fa-chevron-left"></i>
+      </a>
+      <a class="right carousel-control seedarr-control" href="#screenshotCarousel" data-slide="next">
+        <i class="fas fa-chevron-right"></i>
+      </a>
+    </div>
+
+    <p class="carousel-hint"><i class="fas fa-expand-alt"></i> Click any screenshot to view full size</p>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Full-size screenshot">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+  <img id="lightboxImg" src="" alt="Full-size screenshot">
+</div>
 
 <!-- ═══════════════════════════════ FEATURES ═══════════════════════════════ -->
 <section id="features">

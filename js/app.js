@@ -1,6 +1,7 @@
 hljs.highlightAll();
 
-document.querySelectorAll('a[href^="#"]:not([data-toggle="tab"])').forEach(function(a) {
+// Smooth-scroll (exclude Bootstrap tab links and carousel controls)
+document.querySelectorAll('a[href^="#"]:not([data-toggle="tab"]):not([data-slide])').forEach(function(a) {
   a.addEventListener('click', function(e) {
     var target = document.querySelector(this.getAttribute('href'));
     if (target) {
@@ -10,8 +11,9 @@ document.querySelectorAll('a[href^="#"]:not([data-toggle="tab"])').forEach(funct
   });
 });
 
+// Active nav link on scroll
 window.addEventListener('scroll', function() {
-  var sections = ['hero', 'features', 'integration', 'download'];
+  var sections = ['hero', 'screenshots', 'features', 'integration', 'download'];
   var scrollY = window.scrollY + 80;
   sections.forEach(function(id) {
     var el = document.getElementById(id);
@@ -24,3 +26,44 @@ window.addEventListener('scroll', function() {
     }
   });
 });
+
+// Lightbox
+(function() {
+  var overlay  = document.getElementById('lightbox');
+  var lbImg    = document.getElementById('lightboxImg');
+  var closeBtn = document.getElementById('lightboxClose');
+
+  function openLightbox(src, alt) {
+    lbImg.src = src;
+    lbImg.alt = alt || '';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    // clear src after transition so it doesn't flash on next open
+    setTimeout(function() { lbImg.src = ''; }, 200);
+  }
+
+  // Open on carousel image click
+  document.addEventListener('click', function(e) {
+    var img = e.target.closest('.carousel-img');
+    if (img) {
+      openLightbox(img.dataset.full || img.src, img.alt);
+    }
+  });
+
+  // Close via button, overlay click, or Escape
+  closeBtn.addEventListener('click', closeLightbox);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Stop click on the image itself from closing
+  lbImg.addEventListener('click', function(e) { e.stopPropagation(); });
+})();
