@@ -27,40 +27,47 @@ window.addEventListener('scroll', function() {
   });
 });
 
-// Lightbox — plain jQuery, no Bootstrap modal API
+// Lightbox — DEBUG VERSION
 $(function() {
+  console.log('[lightbox] DOM ready');
+  console.log('[lightbox] overlay el:', document.getElementById('lightboxOverlay'));
+  console.log('[lightbox] img el:', document.getElementById('lightboxImg'));
+  console.log('[lightbox] .carousel-img count:', $('.carousel-img').length);
+
   var $overlay = $('#lightboxOverlay');
   var $img     = $('#lightboxImg');
 
   function openLightbox(src, alt) {
+    console.log('[lightbox] openLightbox called, src:', src);
     $img.attr('src', src).attr('alt', alt || '');
     $overlay.fadeIn(180);
     $('body').css('overflow', 'hidden');
   }
 
   function closeLightbox() {
-    $overlay.fadeOut(150, function() {
-      $img.attr('src', '');
-    });
+    $overlay.fadeOut(150, function() { $img.attr('src', ''); });
     $('body').css('overflow', '');
   }
 
-  // Open on slide image click
+  // Catch ALL clicks on document and log target info
+  $(document).on('click', function(e) {
+    var $t = $(e.target);
+    console.log('[click] tag:', e.target.tagName,
+                '| id:', e.target.id || '(none)',
+                '| classes:', e.target.className || '(none)',
+                '| is .carousel-img:', $t.is('.carousel-img'));
+  });
+
   $(document).on('click', '.carousel-img', function(e) {
+    console.log('[lightbox] carousel-img click matched');
     e.stopPropagation();
     var src = $(this).attr('data-full') || this.src;
+    console.log('[lightbox] src to load:', src);
     openLightbox(src, $(this).attr('alt'));
   });
 
-  // Close: button, overlay background, Escape
   $('#lightboxClose').on('click', closeLightbox);
-  $overlay.on('click', function(e) {
-    if (e.target === this) closeLightbox();
-  });
-  $(document).on('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // Prevent click on the image itself from closing
+  $overlay.on('click', function(e) { if (e.target === this) closeLightbox(); });
+  $(document).on('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
   $img.on('click', function(e) { e.stopPropagation(); });
 });
