@@ -1,4 +1,6 @@
-hljs.highlightAll();
+console.log('[app.js] executing - jQuery defined:', typeof $ !== 'undefined', '| hljs defined:', typeof hljs !== 'undefined');
+
+try { hljs.highlightAll(); } catch(e) { console.warn('[app.js] hljs failed:', e.message); }
 
 // Smooth-scroll (exclude Bootstrap tab links and carousel controls)
 document.querySelectorAll('a[href^="#"]:not([data-toggle="tab"]):not([data-slide])').forEach(function(a) {
@@ -31,7 +33,6 @@ window.addEventListener('scroll', function() {
 $(function() {
   console.log('[lightbox] DOM ready');
   console.log('[lightbox] overlay el:', document.getElementById('lightboxOverlay'));
-  console.log('[lightbox] img el:', document.getElementById('lightboxImg'));
   console.log('[lightbox] .carousel-img count:', $('.carousel-img').length);
 
   var $overlay = $('#lightboxOverlay');
@@ -49,21 +50,14 @@ $(function() {
     $('body').css('overflow', '');
   }
 
-  // Catch ALL clicks on document and log target info
   $(document).on('click', function(e) {
-    var $t = $(e.target);
-    console.log('[click] tag:', e.target.tagName,
-                '| id:', e.target.id || '(none)',
-                '| classes:', e.target.className || '(none)',
-                '| is .carousel-img:', $t.is('.carousel-img'));
+    console.log('[click] tag:', e.target.tagName, '| classes:', e.target.className || '(none)', '| is .carousel-img:', $(e.target).is('.carousel-img'));
   });
 
   $(document).on('click', '.carousel-img', function(e) {
-    console.log('[lightbox] carousel-img click matched');
+    console.log('[lightbox] carousel-img matched');
     e.stopPropagation();
-    var src = $(this).attr('data-full') || this.src;
-    console.log('[lightbox] src to load:', src);
-    openLightbox(src, $(this).attr('alt'));
+    openLightbox($(this).attr('data-full') || this.src, $(this).attr('alt'));
   });
 
   $('#lightboxClose').on('click', closeLightbox);
