@@ -7,19 +7,19 @@
   <meta name="description" content="Seedarr is a BitTorrent seeding simulator built on the *arr architecture. Maintain your ratio, keep torrents alive, and integrate with Sonarr and Radarr.">
 
   <!-- Favicon -->
-  <link rel="icon" href="img/Seedarr.svg" type="image/svg+xml">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="apple-touch-icon" href="img/Seedarr.svg">
+  <link rel="apple-touch-icon" href="img/favicon.svg">
 
   <!-- Open Graph -->
-  <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://seedarr.net/">
-  <meta property="og:title"       content="Seedarr - BitTorrent Seeding Simulator">
-  <meta property="og:description" content="The *arr approach to BitTorrent seeding. Maintain your ratio, keep torrents alive, and auto-seed from Sonarr and Radarr — without transferring actual data.">
-  <meta property="og:image"       content="https://seedarr.net/img/og-image.png">
+  <meta property="og:type"         content="website">
+  <meta property="og:url"          content="https://seedarr.net/">
+  <meta property="og:title"        content="Seedarr - BitTorrent Seeding Simulator">
+  <meta property="og:description"  content="The *arr approach to BitTorrent seeding. Maintain your ratio, keep torrents alive, and auto-seed from Sonarr and Radarr — without transferring actual data.">
+  <meta property="og:image"        content="https://seedarr.net/img/og-image.png">
   <meta property="og:image:width"  content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:site_name"   content="Seedarr">
+  <meta property="og:site_name"    content="Seedarr">
 
   <!-- Twitter Card -->
   <meta name="twitter:card"        content="summary_large_image">
@@ -29,104 +29,104 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic,700italic,900italic">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+
   <style>
-    /* ─── Base ─── */
+    /* ─── Design tokens (matches Seedarr React UI App.css) ─── */
+    :root {
+      --bg-primary:    #222018;
+      --bg-secondary:  #2a2620;
+      --bg-dark:       #1a1815;
+      --bg-hover:      #3a352e;
+      --border:        #3a352e;
+      --border-light:  #302c24;
+      --text-primary:  #e8dcc8;
+      --text-secondary:#b0a48e;
+      --text-muted:    #7a7060;
+      --text-dim:      #5a5248;
+      --accent:        #c8a84e;
+      --accent-dark:   #a88a30;
+      --accent-bg:     rgba(200,168,78,0.15);
+      --accent-subtle: rgba(200,168,78,0.06);
+      --accent-border: rgba(200,168,78,0.35);
+      --success:       #8a9a3a;
+      --success-bg:    rgba(138,154,58,0.2);
+      --danger:        #b5443a;
+    }
+
+    /* ─── Reset / Base ─── */
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Lato', sans-serif;
-      background: #111120;
-      color: #d0d6e0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-secondary);
       padding-top: 50px;
     }
-
-    /* ─── Colours ─── */
-    :root {
-      --green:      #2ecc71;
-      --green-dark: #27ae60;
-      --navy:       #111120;
-      --navy-mid:   #17172a;
-      --navy-light: #1e1e36;
-      --card-bg:    #1a1a30;
-      --text:       #d0d6e0;
-      --text-muted: #8892a4;
-      --border:     #252540;
-    }
-
-    a { color: var(--green); }
-    a:hover { color: var(--green-dark); }
+    a { color: var(--accent); }
+    a:hover { color: var(--accent-dark); }
 
     /* ─── Navbar ─── */
     .navbar-inverse {
-      background: #0b0b18;
+      background: var(--bg-dark);
       border: none;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
     }
     .navbar-brand {
-      color: #fff !important;
-      font-weight: 300;
-      font-size: 22px;
-      letter-spacing: 1px;
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 8px 15px;
     }
-    .navbar-brand img { width: 32px; height: 32px; flex-shrink: 0; }
+    .navbar-brand img.brand-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .navbar-brand img.brand-text { height: 20px; flex-shrink: 0; }
     .navbar-inverse .navbar-nav > li > a {
-      color: #aab !important;
+      color: var(--text-muted) !important;
       font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
       text-transform: uppercase;
       padding: 15px 14px;
       transition: color 0.2s;
     }
     .navbar-inverse .navbar-nav > li > a:hover,
     .navbar-inverse .navbar-nav > li.active > a {
-      color: var(--green) !important;
+      color: var(--accent) !important;
       background: transparent !important;
     }
     .navbar-inverse .navbar-nav > li > a i { margin-right: 5px; }
     .navbar-toggle { border-color: var(--border) !important; }
-    .navbar-toggle .icon-bar { background: #aab !important; }
+    .navbar-toggle .icon-bar { background: var(--text-muted) !important; }
 
     /* ─── Hero ─── */
     #hero {
-      background: linear-gradient(160deg, #0d0d22 0%, #131328 50%, #0a1a12 100%);
+      background: linear-gradient(160deg, var(--bg-dark) 0%, var(--bg-primary) 60%, #1c1a12 100%);
       padding: 90px 0 70px;
       position: relative;
       overflow: hidden;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
     }
     #hero::before {
       content: '';
       position: absolute;
-      top: -200px; right: -200px;
-      width: 600px; height: 600px;
+      top: -180px; right: -180px;
+      width: 500px; height: 500px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(46,204,113,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(200,168,78,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-logo {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       margin: 0 auto 24px;
       display: block;
     }
-    .hero-title {
-      font-size: 48px;
-      font-weight: 100;
-      color: #fff;
-      letter-spacing: 2px;
-      margin: 0 0 8px;
+    .hero-wordmark {
+      display: block;
+      height: 38px;
+      margin: 0 auto 14px;
     }
-    .hero-title span { color: var(--green); font-weight: 300; }
     .hero-tagline {
-      font-size: 20px;
-      font-weight: 300;
+      font-size: 19px;
       color: var(--text-muted);
       margin: 0 0 36px;
     }
@@ -141,84 +141,78 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(46,204,113,0.1);
-      border: 1px solid rgba(46,204,113,0.25);
-      color: var(--green);
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
       border-radius: 20px;
       padding: 6px 16px;
       font-size: 13px;
-      font-weight: 400;
     }
     .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .btn-seedarr {
-      background: var(--green);
-      color: #fff;
+      background: var(--accent);
+      color: var(--bg-dark);
       border: none;
       border-radius: 3px;
       padding: 12px 28px;
       font-size: 15px;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
       transition: background 0.2s, transform 0.1s;
+      text-decoration: none;
+      display: inline-block;
     }
-    .btn-seedarr:hover { background: var(--green-dark); color: #fff; transform: translateY(-1px); }
+    .btn-seedarr:hover { background: var(--accent-dark); color: var(--bg-dark); transform: translateY(-1px); text-decoration: none; }
     .btn-seedarr-outline {
       background: transparent;
-      color: var(--green);
-      border: 1px solid var(--green);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
       border-radius: 3px;
       padding: 12px 28px;
       font-size: 15px;
       transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: inline-block;
     }
-    .btn-seedarr-outline:hover { background: var(--green); color: #fff; }
+    .btn-seedarr-outline:hover { background: var(--accent-bg); color: var(--accent); text-decoration: none; }
 
     /* ─── Section shared ─── */
-    .section-header {
-      text-align: center;
-      margin-bottom: 60px;
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-header h2 { font-size: 32px; font-weight: 300; color: var(--text-primary); margin-bottom: 12px; }
+    .section-header h2 span { color: var(--accent); }
+    .section-header p { font-size: 16px; color: var(--text-muted); max-width: 560px; margin: 0 auto; }
+    .divider { width: 48px; height: 2px; background: var(--accent); margin: 14px auto 22px; border-radius: 1px; }
+
+    /* ─── Stats bar ─── */
+    #stats {
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      padding: 36px 0;
     }
-    .section-header h2 {
-      font-size: 34px;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 12px;
-    }
-    .section-header h2 span { color: var(--green); }
-    .section-header p {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin: 0 auto;
-    }
-    .divider {
-      width: 50px; height: 3px;
-      background: var(--green);
-      margin: 16px auto 24px;
-      border-radius: 2px;
-    }
+    .stats-grid { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+    .stat-item { text-align: center; }
+    .stat-value { font-size: 34px; font-weight: 200; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.2px; }
 
     /* ─── Features ─── */
-    #features {
-      padding: 80px 0;
-      background: var(--navy-mid);
-    }
+    #features { padding: 80px 0; background: var(--bg-primary); }
     .feature-row {
       display: flex;
       align-items: center;
       gap: 50px;
       margin-bottom: 80px;
       padding-bottom: 80px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border-light);
     }
     .feature-row:last-child { margin-bottom: 0; padding-bottom: 0; border: none; }
     .feature-row.reverse { flex-direction: row-reverse; }
     .feature-visual {
       flex: 0 0 48%;
-      background: var(--card-bg);
+      background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 40px;
+      border-radius: 6px;
+      padding: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -232,346 +226,153 @@
       top: -40px; right: -40px;
       width: 200px; height: 200px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(46,204,113,0.06) 0%, transparent 70%);
-    }
-    .feature-icon-large {
-      font-size: 72px;
-      color: var(--green);
-      opacity: 0.85;
+      background: radial-gradient(circle, rgba(200,168,78,0.05) 0%, transparent 70%);
     }
     .feature-info { flex: 1; }
-    .feature-info h3 {
-      font-size: 26px;
-      font-weight: 300;
-      color: #fff;
-      margin-bottom: 14px;
-    }
-    .feature-info h3 i {
-      color: var(--green);
-      margin-right: 10px;
-      font-size: 20px;
-    }
-    .feature-info p {
-      font-size: 16px;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .feature-list {
-      list-style: none;
-      padding: 0; margin: 0;
-    }
-    .feature-list li {
-      padding: 5px 0;
-      font-size: 14px;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .feature-list li i {
-      color: var(--green);
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
+    .feature-info h3 { font-size: 24px; font-weight: 300; color: var(--text-primary); margin-bottom: 12px; }
+    .feature-info h3 i { color: var(--accent); margin-right: 10px; font-size: 18px; }
+    .feature-info p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; }
+    .feature-list { list-style: none; padding: 0; margin: 0; }
+    .feature-list li { padding: 4px 0; font-size: 14px; color: var(--text-secondary); display: flex; align-items: flex-start; gap: 8px; }
+    .feature-list li i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
 
-    /* Feature grid for smaller items */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-    }
+    /* Feature grid cards */
+    .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 48px; }
     .feature-card {
-      background: var(--card-bg);
+      background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 28px 24px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .feature-card:hover {
-      border-color: rgba(46,204,113,0.35);
-      transform: translateY(-2px);
-    }
-    .feature-card i {
-      font-size: 28px;
-      color: var(--green);
-      margin-bottom: 14px;
-      display: block;
-    }
-    .feature-card h4 {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .feature-card p {
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    /* ─── Mini dashboard mockup ─── */
-    .mock-dashboard {
-      width: 100%;
-      background: #0d0d20;
       border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--border);
+      padding: 26px 22px;
+      transition: border-color 0.2s, transform 0.15s;
     }
-    .mock-titlebar {
-      background: #1a1a30;
-      padding: 8px 14px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .mock-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .mock-dot.red { background: #e74c3c; }
-    .mock-dot.yellow { background: #f39c12; }
-    .mock-dot.green { background: var(--green); }
-    .mock-url { margin-left: 10px; font-size: 11px; color: var(--text-muted); }
-    .mock-body { padding: 18px; }
-    .mock-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 4px;
-      margin-bottom: 6px;
-      background: var(--card-bg);
-      font-size: 12px;
-    }
-    .mock-name { color: var(--text); font-weight: 500; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .mock-badge {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 11px;
-      font-weight: 700;
-      margin-left: 8px;
-    }
-    .mock-badge.seeding { background: rgba(46,204,113,0.15); color: var(--green); }
-    .mock-badge.paused  { background: rgba(127,140,141,0.15); color: #7f8c8d; }
-    .mock-speed { color: var(--green); font-size: 11px; margin-left: 8px; }
-    .mock-bar { height: 3px; background: var(--border); border-radius: 2px; margin-top: 10px; }
-    .mock-bar-fill { height: 100%; background: var(--green); border-radius: 2px; }
+    .feature-card:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+    .feature-card i { font-size: 26px; color: var(--accent); margin-bottom: 12px; display: block; }
+    .feature-card h4 { color: var(--text-primary); font-size: 15px; font-weight: 600; margin-bottom: 7px; }
+    .feature-card p { color: var(--text-muted); font-size: 13px; line-height: 1.6; margin: 0; }
 
-    /* Protocol mockup */
-    .mock-protocols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-    .mock-proto {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 10px 12px;
-      font-size: 11px;
-    }
-    .mock-proto-name { color: var(--text); font-weight: 600; margin-bottom: 2px; }
-    .mock-proto-status { color: var(--green); font-size: 10px; }
-    .mock-proto-status.warn { color: #f39c12; }
+    /* ─── Mock dashboard ─── */
+    .mock-dashboard { width: 100%; background: var(--bg-dark); border-radius: 5px; border: 1px solid var(--border); overflow: hidden; }
+    .mock-titlebar { background: var(--bg-secondary); padding: 8px 12px; display: flex; align-items: center; gap: 5px; }
+    .mock-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .mock-dot.red    { background: var(--danger); }
+    .mock-dot.yellow { background: var(--accent); opacity: 0.7; }
+    .mock-dot.green  { background: var(--success); }
+    .mock-url { margin-left: 10px; font-size: 11px; color: var(--text-dim); }
+    .mock-body { padding: 16px; }
+    .mock-row { display: flex; justify-content: space-between; align-items: center; padding: 9px 11px; border-radius: 3px; margin-bottom: 5px; background: var(--bg-secondary); font-size: 12px; }
+    .mock-name { color: var(--text-secondary); font-weight: 500; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mock-badge { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; margin-left: 8px; }
+    .mock-badge.seeding { background: var(--success-bg); color: var(--success); }
+    .mock-badge.paused  { background: rgba(122,112,96,0.2); color: var(--text-dim); }
+    .mock-speed { color: var(--accent); font-size: 11px; margin-left: 8px; }
+    .mock-bar { height: 2px; background: var(--border); border-radius: 1px; margin-top: 8px; }
+    .mock-bar-fill { height: 100%; background: var(--accent); border-radius: 1px; }
+
+    /* Protocol grid */
+    .mock-protocols { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .mock-proto { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 4px; padding: 9px 11px; font-size: 11px; }
+    .mock-proto-name { color: var(--text-secondary); font-weight: 600; margin-bottom: 2px; }
+    .mock-proto-status { color: var(--success); font-size: 10px; }
+    .mock-proto-status.warn { color: var(--accent); }
+
+    /* ─── Integration ─── */
+    #integration { padding: 80px 0; background: var(--bg-secondary); }
+    .integration-cards { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 40px; }
+    .int-card { background: var(--bg-primary); border: 1px solid var(--border); border-radius: 6px; padding: 28px 34px; text-align: center; transition: border-color 0.2s; min-width: 170px; }
+    .int-card:hover { border-color: var(--accent-border); }
+    .int-card i { font-size: 32px; color: var(--accent); margin-bottom: 10px; display: block; }
+    .int-card h4 { color: var(--text-primary); font-size: 17px; font-weight: 300; margin-bottom: 5px; }
+    .int-card p { color: var(--text-muted); font-size: 12px; margin: 0; }
 
     /* ─── Download ─── */
-    #download {
-      padding: 80px 0;
-      background: var(--navy);
-    }
-    .nav-tabs {
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 32px;
-    }
+    #download { padding: 80px 0; background: var(--bg-primary); }
+    .nav-tabs { border-bottom: 1px solid var(--border); margin-bottom: 28px; }
     .nav-tabs > li > a {
       color: var(--text-muted);
       background: transparent;
       border: 1px solid transparent;
       border-radius: 3px 3px 0 0;
-      padding: 10px 18px;
+      padding: 9px 16px;
       font-size: 13px;
-      font-weight: 400;
       transition: color 0.2s;
     }
-    .nav-tabs > li > a:hover {
-      color: var(--green);
-      background: rgba(46,204,113,0.05);
-      border-color: transparent;
-    }
+    .nav-tabs > li > a:hover { color: var(--accent); background: var(--accent-subtle); border-color: transparent; }
     .nav-tabs > li.active > a,
     .nav-tabs > li.active > a:focus,
     .nav-tabs > li.active > a:hover {
-      background: var(--navy-light);
-      color: var(--green);
+      background: var(--bg-secondary);
+      color: var(--accent);
       border: 1px solid var(--border);
-      border-bottom-color: var(--navy-light);
+      border-bottom-color: var(--bg-secondary);
     }
-    .tab-content { color: var(--text); }
-    .tab-pane h4 {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 300;
-      margin-bottom: 16px;
-    }
-    .tab-pane p { color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .tab-content { color: var(--text-secondary); }
+    .tab-pane h4 { color: var(--text-primary); font-size: 17px; font-weight: 300; margin-bottom: 14px; }
+    .tab-pane p { color: var(--text-muted); line-height: 1.7; margin-bottom: 14px; }
     .tab-pane ol, .tab-pane ul { color: var(--text-muted); padding-left: 20px; }
-    .tab-pane li { margin-bottom: 8px; line-height: 1.6; }
-    pre {
-      background: #0a0a18 !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 6px;
-      padding: 20px !important;
-      font-size: 13px;
-    }
-    code { background: rgba(46,204,113,0.1); color: var(--green); padding: 2px 5px; border-radius: 3px; font-size: 13px; }
-    pre code { background: none; color: #cdd6f4; padding: 0; }
+    .tab-pane li { margin-bottom: 7px; line-height: 1.6; }
+    pre { background: var(--bg-dark) !important; border: 1px solid var(--border) !important; border-radius: 5px; padding: 18px !important; font-size: 13px; }
+    code { background: var(--accent-subtle); color: var(--accent); padding: 2px 5px; border-radius: 3px; font-size: 12px; }
+    pre code { background: none; color: #cdd6f4; padding: 0; font-size: 13px; }
     .download-btn {
       display: inline-block;
-      background: var(--green);
-      color: #fff;
-      padding: 10px 22px;
+      background: var(--accent);
+      color: var(--bg-dark);
+      padding: 9px 20px;
       border-radius: 3px;
       font-weight: 700;
-      font-size: 14px;
-      margin: 4px;
+      font-size: 13px;
+      margin: 3px;
       transition: background 0.2s;
       text-decoration: none;
     }
-    .download-btn:hover { background: var(--green-dark); color: #fff; text-decoration: none; }
+    .download-btn:hover { background: var(--accent-dark); color: var(--bg-dark); text-decoration: none; }
     .download-btn i { margin-right: 6px; }
     .download-note {
       font-size: 13px;
       color: var(--text-muted);
-      margin-top: 20px;
-      padding: 14px 18px;
-      background: rgba(46,204,113,0.05);
-      border-left: 3px solid var(--green);
+      margin-top: 18px;
+      padding: 13px 16px;
+      background: var(--accent-subtle);
+      border-left: 3px solid var(--accent);
       border-radius: 0 4px 4px 0;
     }
 
-    /* ─── Stats bar ─── */
-    #stats {
-      background: var(--navy-light);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 36px 0;
-    }
-    .stats-grid {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-    .stat-item { text-align: center; }
-    .stat-value {
-      font-size: 36px;
-      font-weight: 100;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* ─── Integration ─── */
-    #integration {
-      padding: 80px 0;
-      background: var(--navy-mid);
-    }
-    .integration-cards {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .int-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 30px 36px;
-      text-align: center;
-      transition: border-color 0.2s;
-      min-width: 180px;
-    }
-    .int-card:hover { border-color: rgba(46,204,113,0.4); }
-    .int-card i { font-size: 36px; color: var(--green); margin-bottom: 12px; display: block; }
-    .int-card h4 { color: #fff; font-size: 18px; font-weight: 300; margin-bottom: 6px; }
-    .int-card p { color: var(--text-muted); font-size: 13px; margin: 0; }
-
     /* ─── Footer ─── */
     footer {
-      background: #0b0b18;
-      border-top: 1px solid var(--border);
-      padding: 48px 0 32px;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border-light);
+      padding: 48px 0 30px;
     }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .footer-logo img { width: 36px; height: 36px; }
-    .footer-logo span {
-      font-size: 22px;
-      font-weight: 300;
-      color: #fff;
-      letter-spacing: 1px;
-    }
-    .footer-tagline { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a {
-      color: var(--text-muted);
-      font-size: 13px;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--green); }
-    .footer-copy {
-      margin-top: 36px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .footer-copy a { color: var(--text-muted); }
-    .footer-copy a:hover { color: var(--green); }
-    .arr-family {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .arr-link {
-      color: var(--text-muted);
-      font-size: 12px;
-      text-decoration: none;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .arr-link:hover { border-color: var(--green); color: var(--green); text-decoration: none; }
+    .footer-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .footer-logo img.f-icon { width: 34px; height: 34px; }
+    .footer-logo img.f-text { height: 22px; }
+    .footer-tagline { color: var(--text-dim); font-size: 13px; margin-bottom: 22px; }
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-links a { color: var(--text-dim); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-copy { margin-top: 36px; padding-top: 22px; border-top: 1px solid var(--border-light); text-align: center; font-size: 12px; color: var(--text-dim); }
+    .footer-copy a { color: var(--text-dim); }
+    .footer-copy a:hover { color: var(--accent); }
+    .arr-family { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .arr-link { color: var(--text-dim); font-size: 12px; text-decoration: none; padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px; transition: border-color 0.2s, color 0.2s; }
+    .arr-link:hover { border-color: var(--accent-border); color: var(--accent); text-decoration: none; }
+
+    /* ─── Scrollbar ─── */
+    * { scrollbar-color: var(--border) var(--bg-primary); scrollbar-width: thin; }
+    *::-webkit-scrollbar { width: 8px; height: 8px; }
+    *::-webkit-scrollbar-track { background: var(--bg-primary); }
+    *::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    *::-webkit-scrollbar-thumb:hover { background: var(--bg-hover); }
 
     /* ─── Responsive ─── */
     @media (max-width: 767px) {
-      .hero-title { font-size: 32px; }
-      .hero-tagline { font-size: 16px; }
-      .feature-row, .feature-row.reverse {
-        flex-direction: column !important;
-        gap: 30px;
-      }
+      .hero-wordmark { height: 28px; }
+      .hero-tagline { font-size: 15px; }
+      .feature-row, .feature-row.reverse { flex-direction: column !important; gap: 28px; }
       .feature-visual { flex: none; width: 100%; }
-      .stats-grid { gap: 32px; }
     }
 
-    /* ─── Highlight.js override ─── */
+    /* ─── hljs override ─── */
     .hljs { background: transparent !important; }
   </style>
 </head>
@@ -588,8 +389,8 @@
         <span class="icon-bar"></span>
       </button>
       <a href="#hero" class="navbar-brand">
-        <img src="img/Seedarr.svg" alt="Seedarr" width="32" height="32">
-        <span>Seedarr</span>
+        <img class="brand-icon" src="img/favicon.svg" alt="">
+        <img class="brand-text" src="img/seedarr-text.svg" alt="Seedarr">
       </a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -608,10 +409,8 @@
 <section id="hero">
   <div class="container text-center">
 
-    <!-- Logo large -->
-    <img class="hero-logo" src="img/Seedarr.svg" alt="Seedarr">
-
-    <h1 class="hero-title">Seed<span>arr</span></h1>
+    <img class="hero-logo" src="img/seedarr-skull.svg" alt="Seedarr">
+    <img class="hero-wordmark" src="img/seedarr-text.svg" alt="Seedarr">
     <p class="hero-tagline">The <em>*arr</em> approach to BitTorrent seeding &mdash; maintain your ratio, automatically.</p>
 
     <div class="hero-pills">
@@ -665,7 +464,7 @@
     <div class="section-header">
       <h2>Features</h2>
       <div class="divider"></div>
-      <p>Everything you need to keep your torrents seeding &mdash; beautifully, automatically, and without moving a single byte of real data.</p>
+      <p>Everything you need to keep your torrents seeding — beautifully, automatically, and without moving a single byte of real data.</p>
     </div>
 
     <!-- Feature 1: Dashboard -->
@@ -692,7 +491,7 @@
             <div class="mock-row">
               <span class="mock-name">ArchLinux.2026.01.iso</span>
               <span class="mock-badge paused">Paused</span>
-              <span class="mock-speed" style="color:var(--text-muted)">&#8213; 0 B/s</span>
+              <span class="mock-speed" style="color:var(--text-dim)">&#8213; 0 B/s</span>
             </div>
             <div class="mock-row">
               <span class="mock-name">Fedora.40.Workstation.x86_64</span>
@@ -705,14 +504,14 @@
       </div>
       <div class="feature-info">
         <h3><i class="fas fa-tachometer-alt"></i> Real-time Dashboard</h3>
-        <p>Monitor all your seeding torrents at a glance. Speed graphs, peer counts, tracker status, and ratio progress update live via SignalR &mdash; no page refresh needed.</p>
+        <p>Monitor all your seeding torrents at a glance. Speed graphs, peer counts, tracker status, and ratio progress update live via SignalR — no page refresh needed.</p>
         <ul class="feature-list">
           <li><i class="fas fa-chevron-right"></i> Table and grid torrent views</li>
           <li><i class="fas fa-chevron-right"></i> Per-torrent upload speed graphs</li>
           <li><i class="fas fa-chevron-right"></i> Peer list with connection details</li>
           <li><i class="fas fa-chevron-right"></i> Drag-and-drop torrent upload</li>
           <li><i class="fas fa-chevron-right"></i> Dark / light theme with system detection</li>
-          <li><i class="fas fa-chevron-right"></i> Responsive &mdash; desktop, tablet, mobile</li>
+          <li><i class="fas fa-chevron-right"></i> Responsive — desktop, tablet, mobile</li>
         </ul>
       </div>
     </div>
@@ -721,7 +520,7 @@
     <div class="feature-row reverse">
       <div class="feature-visual">
         <div style="width:100%">
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Protocol Stack</div>
+          <div style="font-size:10px;color:var(--text-dim);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">Protocol Stack</div>
           <div class="mock-protocols">
             <div class="mock-proto">
               <div class="mock-proto-name">HTTP Tracker</div>
@@ -760,12 +559,12 @@
       </div>
       <div class="feature-info">
         <h3><i class="fas fa-network-wired"></i> Full Protocol Support</h3>
-        <p>Seedarr speaks the full BitTorrent dialect. Peer connections, tracker announces, encryption, DHT &mdash; every extension needed to look and behave exactly like a real client.</p>
+        <p>Seedarr speaks the full BitTorrent dialect. Peer connections, tracker announces, encryption, DHT — every extension needed to look and behave exactly like a real client.</p>
         <ul class="feature-list">
           <li><i class="fas fa-chevron-right"></i> HTTP &amp; UDP tracker announce/scrape (BEP 3, BEP 15)</li>
           <li><i class="fas fa-chevron-right"></i> Multi-tracker failover with tier support (BEP 12)</li>
           <li><i class="fas fa-chevron-right"></i> TCP peer connections with full handshake</li>
-          <li><i class="fas fa-chevron-right"></i> MSE/PE stream encryption &mdash; RC4 + DH key exchange</li>
+          <li><i class="fas fa-chevron-right"></i> MSE/PE stream encryption — RC4 + DH key exchange</li>
           <li><i class="fas fa-chevron-right"></i> DHT distributed hash table (BEP 5)</li>
           <li><i class="fas fa-chevron-right"></i> Metadata Exchange + Fast Extension (BEP 9, BEP 6)</li>
         </ul>
@@ -776,25 +575,25 @@
     <div class="feature-row">
       <div class="feature-visual">
         <div style="width:100%">
-          <div style="font-size:11px;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px;">Active Client Profile</div>
-          <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:20px;">
-            <div style="display:flex;gap:16px;margin-bottom:16px;">
-              <div style="flex:1;text-align:center;padding:14px;border:1px solid rgba(46,204,113,0.4);border-radius:4px;background:rgba(46,204,113,0.05);">
-                <div style="font-size:11px;color:var(--green);font-weight:700;">qBittorrent</div>
-                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">-qB4420-</div>
+          <div style="font-size:10px;color:var(--text-dim);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px;">Active Client Profile</div>
+          <div style="background:var(--bg-dark);border:1px solid var(--border);border-radius:5px;padding:18px;">
+            <div style="display:flex;gap:12px;margin-bottom:14px;">
+              <div style="flex:1;text-align:center;padding:12px 8px;border:1px solid var(--accent-border);border-radius:4px;background:var(--accent-subtle);">
+                <div style="font-size:11px;color:var(--accent);font-weight:700;">qBittorrent</div>
+                <div style="font-size:10px;color:var(--text-dim);margin-top:3px;">-qB4420-</div>
               </div>
-              <div style="flex:1;text-align:center;padding:14px;border:1px solid var(--border);border-radius:4px;">
+              <div style="flex:1;text-align:center;padding:12px 8px;border:1px solid var(--border);border-radius:4px;">
                 <div style="font-size:11px;color:var(--text-muted);">Deluge</div>
-                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">-DE2030-</div>
+                <div style="font-size:10px;color:var(--text-dim);margin-top:3px;">-DE2030-</div>
               </div>
-              <div style="flex:1;text-align:center;padding:14px;border:1px solid var(--border);border-radius:4px;">
+              <div style="flex:1;text-align:center;padding:12px 8px;border:1px solid var(--border);border-radius:4px;">
                 <div style="font-size:11px;color:var(--text-muted);">Transmission</div>
-                <div style="font-size:10px;color:var(--text-muted);margin-top:4px;">-TR3000-</div>
+                <div style="font-size:10px;color:var(--text-dim);margin-top:3px;">-TR3000-</div>
               </div>
             </div>
-            <div style="font-size:11px;color:var(--text-muted);margin-bottom:6px;">Speed Distribution</div>
-            <div style="display:flex;gap:8px;flex-wrap:wrap;">
-              <span style="font-size:11px;padding:3px 10px;border-radius:10px;background:rgba(46,204,113,0.15);color:var(--green);">Pareto 80/20</span>
+            <div style="font-size:10px;color:var(--text-dim);margin-bottom:7px;text-transform:uppercase;letter-spacing:1px;">Speed Distribution</div>
+            <div style="display:flex;gap:7px;flex-wrap:wrap;">
+              <span style="font-size:11px;padding:3px 10px;border-radius:10px;background:var(--accent-bg);color:var(--accent);">Pareto 80/20</span>
               <span style="font-size:11px;padding:3px 10px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);">Power Law</span>
               <span style="font-size:11px;padding:3px 10px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);">Log-Normal</span>
               <span style="font-size:11px;padding:3px 10px;border-radius:10px;border:1px solid var(--border);color:var(--text-muted);">Equal</span>
@@ -816,7 +615,7 @@
       </div>
     </div>
 
-    <!-- Mini feature grid -->
+    <!-- Feature grid -->
     <div class="feature-grid">
       <div class="feature-card">
         <i class="fas fa-calendar-alt"></i>
@@ -859,7 +658,7 @@
     <div class="section-header">
       <h2>*arr <span>Integration</span></h2>
       <div class="divider"></div>
-      <p>Connect to your existing Sonarr and Radarr instances. Seedarr syncs your download history and automatically begins simulating seeds for everything you watch.</p>
+      <p>Connect to your existing Sonarr and Radarr instances. Seedarr syncs your download history and automatically begins simulating seeds.</p>
     </div>
     <div class="integration-cards">
       <div class="int-card">
@@ -883,10 +682,10 @@
         <p>Auto-seed book downloads</p>
       </div>
     </div>
-    <div style="margin-top:40px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:28px;">
-      <h4 style="color:#fff;font-weight:300;margin-bottom:12px;"><i class="fas fa-plug" style="color:var(--green);margin-right:8px;"></i>Setup in 3 steps</h4>
-      <ol style="color:var(--text-muted);margin:0;padding-left:20px;line-height:2;">
-        <li>Go to <strong style="color:var(--text)">Settings &gt; Arr Connections</strong> in Seedarr</li>
+    <div style="margin-top:36px;background:var(--bg-primary);border:1px solid var(--border);border-radius:6px;padding:26px;">
+      <h4 style="color:var(--text-primary);font-weight:300;margin-bottom:10px;"><i class="fas fa-plug" style="color:var(--accent);margin-right:8px;"></i>Setup in 3 steps</h4>
+      <ol style="color:var(--text-muted);margin:0;padding-left:20px;line-height:2.2;">
+        <li>Go to <strong style="color:var(--text-secondary)">Settings &gt; Arr Connections</strong> in Seedarr</li>
         <li>Add your Sonarr/Radarr URL and API key</li>
         <li>Seedarr periodically syncs and begins simulating seeds for your download history</li>
       </ol>
@@ -914,7 +713,6 @@
 
     <div class="tab-content">
 
-      <!-- Docker -->
       <div class="tab-pane active" id="tab-docker">
         <h4>Docker (Recommended)</h4>
         <p>The easiest way to run Seedarr. The official image is published to Docker Hub and GHCR.</p>
@@ -925,8 +723,7 @@
   -v seedarr-data:/data \
   --restart unless-stopped \
   feeditout/seedarr:latest</code></pre>
-        <p>Then open <strong>http://localhost:9898</strong></p>
-
+        <p>Then open <strong style="color:var(--text-primary)">http://localhost:9898</strong></p>
         <h4>Docker Compose / Podman Compose</h4>
         <pre><code class="language-yaml">services:
   seedarr:
@@ -955,15 +752,14 @@ volumes:
 podman-compose up -d</code></pre>
         <p>GHCR alternative: <code>ghcr.io/dmzoneill/seedarr:latest</code></p>
         <div class="download-note">
-          <strong>Volumes:</strong> <code>/config</code> stores the database, settings, and logs. <code>/data</code> holds torrent files and the watch folder.
+          <strong style="color:var(--text-secondary)">Volumes:</strong> <code>/config</code> stores the database, settings, and logs. <code>/data</code> holds torrent files and the watch folder.
         </div>
       </div>
 
-      <!-- Linux -->
       <div class="tab-pane" id="tab-linux">
         <h4>Linux</h4>
         <p>Seedarr requires .NET 10 runtime. Use the generic tar.gz for manual installation on any Linux distribution.</p>
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:18px;">
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Linux x64</a>
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Linux arm64</a>
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Linux arm</a>
@@ -972,18 +768,15 @@ podman-compose up -d</code></pre>
           <li>Download the appropriate archive for your architecture.</li>
           <li>Extract and move to a suitable directory (e.g. <code>/opt/seedarr</code>).</li>
           <li>Run <code>./Seedarr</code> or create a systemd unit file for autostart.</li>
-          <li>Browse to <strong>http://localhost:9898</strong></li>
+          <li>Browse to <strong style="color:var(--text-primary)">http://localhost:9898</strong></li>
         </ol>
-        <div class="download-note">
-          For production use on Linux, Docker is strongly recommended for isolation and easy updates.
-        </div>
+        <div class="download-note">For production use on Linux, Docker is strongly recommended for isolation and easy updates.</div>
       </div>
 
-      <!-- macOS -->
       <div class="tab-pane" id="tab-macos">
         <h4>macOS</h4>
         <p>Seedarr supports macOS on both Intel and Apple Silicon (arm64).</p>
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:18px;">
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Intel (x64)</a>
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Apple Silicon (arm64)</a>
         </div>
@@ -991,29 +784,25 @@ podman-compose up -d</code></pre>
           <li>Download the macOS archive for your CPU.</li>
           <li>Extract and move <code>Seedarr.app</code> to your Applications folder.</li>
           <li>Self-sign if needed: <code>codesign --force --deep -s - /Applications/Seedarr.app</code></li>
-          <li>Open Seedarr.app and browse to <strong>http://localhost:9898</strong></li>
+          <li>Open Seedarr.app and browse to <strong style="color:var(--text-primary)">http://localhost:9898</strong></li>
         </ol>
       </div>
 
-      <!-- Windows -->
       <div class="tab-pane" id="tab-windows">
         <h4>Windows</h4>
         <p>Seedarr can run as a Windows Service or System Tray Application. Supports Windows 10 / Server 2019 or later.</p>
-        <div style="margin-bottom:20px;">
+        <div style="margin-bottom:18px;">
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Windows x64 Installer</a>
           <a href="https://github.com/dmzoneill/Seedarr/releases/latest" class="download-btn" target="_blank" rel="noopener"><i class="fas fa-download"></i> Windows x86 Installer</a>
         </div>
         <ol>
           <li>Download and execute the installer.</li>
           <li>Choose between Windows Service (always running) or System Tray Application (runs when logged in).</li>
-          <li>Browse to <strong>http://localhost:9898</strong></li>
+          <li>Browse to <strong style="color:var(--text-primary)">http://localhost:9898</strong></li>
         </ol>
-        <div class="download-note">
-          Windows Service accounts do not have access to network drives by default. If your torrents or config are on a mapped drive, use the System Tray installation instead.
-        </div>
+        <div class="download-note">Windows Service accounts do not have access to network drives by default. If your config is on a mapped drive, use the System Tray installation instead.</div>
       </div>
 
-      <!-- NAS -->
       <div class="tab-pane" id="tab-nas">
         <h4>NAS Devices</h4>
         <p>Seedarr runs on most NAS devices via Docker. Synology, QNAP, Unraid, and TrueNAS are all supported.</p>
@@ -1022,12 +811,12 @@ podman-compose up -d</code></pre>
           <li>Install Container Manager from the Package Center.</li>
           <li>Pull <code>feeditout/seedarr:latest</code> from Docker Hub.</li>
           <li>Configure port <code>9898</code> and map volumes for <code>/config</code> and <code>/data</code>.</li>
-          <li>Browse to <strong>http://&lt;NAS-IP&gt;:9898</strong></li>
+          <li>Browse to <strong style="color:var(--text-primary)">http://&lt;NAS-IP&gt;:9898</strong></li>
         </ol>
         <h4>Unraid</h4>
         <ol>
           <li>Open the Community Applications plugin.</li>
-          <li>Search for <strong>Seedarr</strong>.</li>
+          <li>Search for <strong style="color:var(--text-secondary)">Seedarr</strong>.</li>
           <li>Click Install and follow the prompts.</li>
         </ol>
         <h4>TrueNAS SCALE</h4>
@@ -1037,7 +826,6 @@ podman-compose up -d</code></pre>
         </ol>
       </div>
 
-      <!-- Source -->
       <div class="tab-pane" id="tab-source">
         <h4>Build from Source</h4>
         <p>Requirements: .NET 10 SDK, Node.js 20+, npm.</p>
@@ -1057,12 +845,10 @@ make build          # Build release
 make test           # Run unit tests
 make publish        # Publish release artifacts
 make frontend       # Build production frontend bundle</code></pre>
-        <div class="download-note">
-          The frontend dev server proxies API calls to the backend running on port <code>9898</code>. Both must be running simultaneously during development.
-        </div>
+        <div class="download-note">The frontend dev server proxies API calls to the backend on port <code>9898</code>. Both must be running simultaneously during development.</div>
       </div>
 
-    </div><!-- /tab-content -->
+    </div>
   </div>
 </section>
 
@@ -1072,8 +858,8 @@ make frontend       # Build production frontend bundle</code></pre>
     <div class="row">
       <div class="col-sm-6">
         <div class="footer-logo">
-          <img src="img/Seedarr.svg" alt="Seedarr" width="36" height="36">
-          <span>Seedarr</span>
+          <img class="f-icon" src="img/favicon.svg" alt="">
+          <img class="f-text" src="img/seedarr-text.svg" alt="Seedarr">
         </div>
         <p class="footer-tagline">BitTorrent Seeding Simulator &mdash; the <em>*arr</em> way.</p>
         <div class="footer-links">
@@ -1084,19 +870,20 @@ make frontend       # Build production frontend bundle</code></pre>
         </div>
       </div>
       <div class="col-sm-6" style="margin-top:20px;">
-        <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px;">Part of the <em>*arr</em> ecosystem</p>
+        <p style="color:var(--text-dim);font-size:13px;margin-bottom:10px;">Part of the <em>*arr</em> ecosystem</p>
         <div class="arr-family">
-          <a href="https://sonarr.tv/" class="arr-link" target="_blank" rel="noopener">Sonarr</a>
+          <a href="https://sonarr.tv/"    class="arr-link" target="_blank" rel="noopener">Sonarr</a>
           <a href="https://radarr.video/" class="arr-link" target="_blank" rel="noopener">Radarr</a>
           <a href="https://lidarr.audio/" class="arr-link" target="_blank" rel="noopener">Lidarr</a>
-          <a href="https://readarr.com/" class="arr-link" target="_blank" rel="noopener">Readarr</a>
+          <a href="https://readarr.com/"  class="arr-link" target="_blank" rel="noopener">Readarr</a>
           <a href="https://prowlarr.com/" class="arr-link" target="_blank" rel="noopener">Prowlarr</a>
         </div>
       </div>
     </div>
     <div class="footer-copy">
       <p>
-        &copy; 2026 Seedarr &mdash; Released under the <a href="https://github.com/dmzoneill/Seedarr/blob/main/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>.
+        &copy; 2026 Seedarr &mdash; Released under the
+        <a href="https://github.com/dmzoneill/Seedarr/blob/main/LICENSE" target="_blank" rel="noopener">Apache License 2.0</a>.
         Built on the <a href="https://sonarr.tv/" target="_blank" rel="noopener">Sonarr</a>/<a href="https://radarr.video/" target="_blank" rel="noopener">Radarr</a> architecture.
       </p>
     </div>
