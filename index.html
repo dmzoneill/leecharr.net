@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Seedarr - BitTorrent Seeding Simulator</title>
   <meta name="description" content="Seedarr is a BitTorrent seeding simulator built on the *arr architecture. Maintain your ratio, keep torrents alive, and integrate with Sonarr and Radarr.">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/Seedarr.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="img/Seedarr.svg">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://seedarr.net/">
+  <meta property="og:title"       content="Seedarr - BitTorrent Seeding Simulator">
+  <meta property="og:description" content="The *arr approach to BitTorrent seeding. Maintain your ratio, keep torrents alive, and auto-seed from Sonarr and Radarr — without transferring actual data.">
+  <meta property="og:image"       content="https://seedarr.net/img/og-image.png">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name"   content="Seedarr">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="Seedarr - BitTorrent Seeding Simulator">
+  <meta name="twitter:description" content="The *arr approach to BitTorrent seeding. Maintain your ratio, keep torrents alive, and auto-seed from Sonarr and Radarr — without transferring actual data.">
+  <meta name="twitter:image"       content="https://seedarr.net/img/og-image.png">
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic,400italic,700italic,900italic">
@@ -52,7 +74,7 @@
       gap: 10px;
       padding: 8px 15px;
     }
-    .navbar-brand svg { width: 32px; height: 32px; flex-shrink: 0; }
+    .navbar-brand img { width: 32px; height: 32px; flex-shrink: 0; }
     .navbar-inverse .navbar-nav > li > a {
       color: #aab !important;
       font-size: 13px;
@@ -494,7 +516,7 @@
       gap: 12px;
       margin-bottom: 16px;
     }
-    .footer-logo svg { width: 36px; height: 36px; }
+    .footer-logo img { width: 36px; height: 36px; }
     .footer-logo span {
       font-size: 22px;
       font-weight: 300;
@@ -566,21 +588,7 @@
         <span class="icon-bar"></span>
       </button>
       <a href="#hero" class="navbar-brand">
-        <!-- Seedarr Logo SVG -->
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer seed shape -->
-          <ellipse cx="50" cy="54" rx="34" ry="40" fill="#1e2a1e" stroke="#2ecc71" stroke-width="2.5"/>
-          <!-- Stem/sprout -->
-          <line x1="50" y1="74" x2="50" y2="52" stroke="#2ecc71" stroke-width="4" stroke-linecap="round"/>
-          <!-- Leaf left -->
-          <path d="M50 62 Q36 52 32 40 Q44 44 50 56" fill="#2ecc71" opacity="0.9"/>
-          <!-- Leaf right -->
-          <path d="M50 56 Q56 44 68 40 Q64 52 50 62" fill="#27ae60" opacity="0.9"/>
-          <!-- Seed inner core -->
-          <ellipse cx="50" cy="78" rx="10" ry="8" fill="#2ecc71" opacity="0.6"/>
-          <!-- Upload arrow head -->
-          <polygon points="50,18 42,32 47,32 47,46 53,46 53,32 58,32" fill="#2ecc71"/>
-        </svg>
+        <img src="img/Seedarr.svg" alt="Seedarr" width="32" height="32">
         <span>Seedarr</span>
       </a>
     </div>
@@ -601,14 +609,7 @@
   <div class="container text-center">
 
     <!-- Logo large -->
-    <svg class="hero-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-      <ellipse cx="50" cy="54" rx="34" ry="40" fill="#1a2a1a" stroke="#2ecc71" stroke-width="2"/>
-      <line x1="50" y1="74" x2="50" y2="52" stroke="#2ecc71" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M50 62 Q36 52 32 40 Q44 44 50 56" fill="#2ecc71" opacity="0.9"/>
-      <path d="M50 56 Q56 44 68 40 Q64 52 50 62" fill="#27ae60" opacity="0.9"/>
-      <ellipse cx="50" cy="78" rx="10" ry="8" fill="#2ecc71" opacity="0.5"/>
-      <polygon points="50,14 41,29 46,29 46,46 54,46 54,29 59,29" fill="#2ecc71"/>
-    </svg>
+    <img class="hero-logo" src="img/Seedarr.svg" alt="Seedarr">
 
     <h1 class="hero-title">Seed<span>arr</span></h1>
     <p class="hero-tagline">The <em>*arr</em> approach to BitTorrent seeding &mdash; maintain your ratio, automatically.</p>
@@ -1071,14 +1072,7 @@ make frontend       # Build production frontend bundle</code></pre>
     <div class="row">
       <div class="col-sm-6">
         <div class="footer-logo">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="50" cy="54" rx="34" ry="40" fill="#1a2a1a" stroke="#2ecc71" stroke-width="2"/>
-            <line x1="50" y1="74" x2="50" y2="52" stroke="#2ecc71" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M50 62 Q36 52 32 40 Q44 44 50 56" fill="#2ecc71" opacity="0.9"/>
-            <path d="M50 56 Q56 44 68 40 Q64 52 50 62" fill="#27ae60" opacity="0.9"/>
-            <ellipse cx="50" cy="78" rx="10" ry="8" fill="#2ecc71" opacity="0.5"/>
-            <polygon points="50,14 41,29 46,29 46,46 54,46 54,29 59,29" fill="#2ecc71"/>
-          </svg>
+          <img src="img/Seedarr.svg" alt="Seedarr" width="36" height="36">
           <span>Seedarr</span>
         </div>
         <p class="footer-tagline">BitTorrent Seeding Simulator &mdash; the <em>*arr</em> way.</p>
@@ -1113,36 +1107,7 @@ make frontend       # Build production frontend bundle</code></pre>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>
-  hljs.highlightAll();
-
-  // Smooth-scroll for internal anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      var target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: target.offsetTop - 60, behavior: 'smooth' });
-      }
-    });
-  });
-
-  // Mark active nav link on scroll
-  window.addEventListener('scroll', function() {
-    var sections = ['hero', 'features', 'integration', 'download'];
-    var scrollY = window.scrollY + 80;
-    sections.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (!el) return;
-      var link = document.querySelector('.navbar-nav a[href="#' + id + '"]');
-      if (!link) return;
-      if (scrollY >= el.offsetTop && scrollY < el.offsetTop + el.offsetHeight) {
-        document.querySelectorAll('.navbar-nav li').forEach(function(li){ li.classList.remove('active'); });
-        link.parentElement.classList.add('active');
-      }
-    });
-  });
-</script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
