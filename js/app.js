@@ -27,40 +27,14 @@ window.addEventListener('scroll', function() {
   });
 });
 
-// Lightbox
-(function() {
-  var overlay  = document.getElementById('lightbox');
-  var lbImg    = document.getElementById('lightboxImg');
-  var closeBtn = document.getElementById('lightboxClose');
+// Lightbox — Bootstrap modal
+$(document).on('click', '.carousel-img', function() {
+  var src = $(this).data('full') || this.src;
+  $('#lightboxImg').attr('src', src).attr('alt', $(this).attr('alt') || '');
+  $('#lightboxModal').modal('show');
+});
 
-  function openLightbox(src, alt) {
-    lbImg.src = src;
-    lbImg.alt = alt || '';
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeLightbox() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    // clear src after transition so it doesn't flash on next open
-    setTimeout(function() { lbImg.src = ''; }, 200);
-  }
-
-  // Open on carousel image click (jQuery delegation — reliable with Bootstrap 3)
-  $(document).on('click', '.carousel-img', function() {
-    openLightbox($(this).data('full') || this.src, this.alt);
-  });
-
-  // Close via button, overlay click, or Escape
-  closeBtn.addEventListener('click', closeLightbox);
-  overlay.addEventListener('click', function(e) {
-    if (e.target === overlay) closeLightbox();
-  });
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-
-  // Stop click on the image itself from closing
-  lbImg.addEventListener('click', function(e) { e.stopPropagation(); });
-})();
+// Clear src when modal closes (avoids flash of old image on next open)
+$('#lightboxModal').on('hidden.bs.modal', function() {
+  $('#lightboxImg').attr('src', '');
+});
