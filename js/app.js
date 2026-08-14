@@ -1,6 +1,4 @@
-console.log('[app.js] executing - jQuery defined:', typeof $ !== 'undefined', '| hljs defined:', typeof hljs !== 'undefined');
-
-try { hljs.highlightAll(); } catch(e) { console.warn('[app.js] hljs failed:', e.message); }
+try { hljs.highlightAll(); } catch(e) {}
 
 // Smooth-scroll (exclude Bootstrap tab links and carousel controls)
 document.querySelectorAll('a[href^="#"]:not([data-toggle="tab"]):not([data-slide])').forEach(function(a) {
@@ -29,17 +27,12 @@ window.addEventListener('scroll', function() {
   });
 });
 
-// Lightbox — DEBUG VERSION
+// Lightbox
 $(function() {
-  console.log('[lightbox] DOM ready');
-  console.log('[lightbox] overlay el:', document.getElementById('lightboxOverlay'));
-  console.log('[lightbox] .carousel-img count:', $('.carousel-img').length);
-
   var $overlay = $('#lightboxOverlay');
   var $img     = $('#lightboxImg');
 
   function openLightbox(src, alt) {
-    console.log('[lightbox] openLightbox called, src:', src);
     $img.attr('src', src).attr('alt', alt || '');
     $overlay.fadeIn(180);
     $('body').css('overflow', 'hidden');
@@ -50,12 +43,7 @@ $(function() {
     $('body').css('overflow', '');
   }
 
-  $(document).on('click', function(e) {
-    console.log('[click] tag:', e.target.tagName, '| classes:', e.target.className || '(none)', '| is .carousel-img:', $(e.target).is('.carousel-img'));
-  });
-
   $(document).on('click', '.carousel-img', function(e) {
-    console.log('[lightbox] carousel-img matched');
     e.stopPropagation();
     openLightbox($(this).attr('data-full') || this.src, $(this).attr('alt'));
   });
