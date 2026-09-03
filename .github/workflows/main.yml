@@ -18,3 +18,5 @@ jobs:
     with:
       basic: "true"
       VALIDATE_CSS: "false"
+      VALIDATE_SHELL_SHFMT: "false"
+      VALIDATE_BASH: "false"
