@@ -1045,11 +1045,12 @@ get_header();
 
         <div class="tab-content">
           <div class="tab-pane active" id="tab-docker">
-            <h4>Docker (Recommended)</h4>
+            <h4>Container Run (Podman / Docker)</h4>
             <p>
               The easiest way to run Leecharr. The official image is published to Docker Hub and
-              GHCR.
+              GitHub Container Registry (GHCR).
             </p>
+            <p><strong style="color: var(--text-secondary)">Option 1: Docker Hub</strong></p>
             <pre><code class="language-bash">docker run -d \
   --name leecharr \
   -p 7889:7889 \
@@ -1058,6 +1059,15 @@ get_header();
   -v leecharr-downloads:/downloads \
   --restart unless-stopped \
   feeditout/leecharr:latest</code></pre>
+            <p><strong style="color: var(--text-secondary)">Option 2: GitHub Container Registry (GHCR)</strong></p>
+            <pre><code class="language-bash">docker run -d \
+  --name leecharr \
+  -p 7889:7889 \
+  -p 51413:51413 \
+  -v leecharr-config:/config \
+  -v leecharr-downloads:/downloads \
+  --restart unless-stopped \
+  ghcr.io/dmzoneill/leecharr:latest</code></pre>
             <p>
               Then open
               <strong style="color: var(--text-primary)">http://localhost:7889</strong>
@@ -1065,7 +1075,10 @@ get_header();
             <h4>Docker Compose / Podman Compose</h4>
             <pre><code class="language-yaml">services:
   leecharr:
+    # Option 1 (Docker Hub):
     image: feeditout/leecharr:latest
+    # Option 2 (GHCR):
+    # image: ghcr.io/dmzoneill/leecharr:latest
     container_name: leecharr
     ports:
       - "7889:7889"
@@ -1089,7 +1102,6 @@ volumes:
             <pre><code class="language-bash">docker compose up -d
 # or
 podman-compose up -d</code></pre>
-            <p>GHCR alternative: <code>ghcr.io/dmzoneill/leecharr:latest</code></p>
             <div class="download-note">
               <strong style="color: var(--text-secondary)">Volumes:</strong>
               <code>/config</code> stores the database, settings, and logs.
@@ -1225,7 +1237,7 @@ podman-compose up -d</code></pre>
             <h4>Synology</h4>
             <ol>
               <li>Install Container Manager from the Package Center.</li>
-              <li>Pull <code>feeditout/leecharr:latest</code> from Docker Hub.</li>
+              <li>Pull <code>feeditout/leecharr:latest</code> from Docker Hub, or <code>ghcr.io/dmzoneill/leecharr:latest</code> from GHCR.</li>
               <li>
                 Configure port <code>7889</code> and map volumes for <code>/config</code> and
                 <code>/downloads</code>.
