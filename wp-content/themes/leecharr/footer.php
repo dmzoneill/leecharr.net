@@ -1,59 +1,14 @@
 <?php
+
 /**
  * Footer template
  *
  * @package Leecharr
  */
+
+require_once __DIR__ . '/inc/asset-uri.php';
+get_template_part('template-parts/lightbox');
 ?>
-<!-- Lightbox -->
-<div
-  id="lightboxOverlay"
-  style="
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.92);
-    z-index: 99999;
-    cursor: zoom-out;
-    text-align: center;
-  "
->
-  <button
-    id="lightboxClose"
-    style="
-      position: fixed;
-      top: 16px;
-      right: 20px;
-      background: #171b35;
-      border: 1px solid #2c325b;
-      color: #c7c5d3;
-      font-size: 22px;
-      width: 34px;
-      height: 34px;
-      border-radius: 4px;
-      cursor: pointer;
-      line-height: 1;
-    "
-  >
-    &times;
-  </button>
-  <img
-    id="lightboxImg"
-    src=""
-    alt=""
-    style="
-      max-width: 92%;
-      max-height: 90vh;
-      margin-top: 4vh;
-      border-radius: 4px;
-      cursor: default;
-      box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7);
-    "
-  />
-</div>
 
 <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
 <footer>
@@ -61,8 +16,8 @@
     <div class="row">
       <div class="col-sm-6">
         <div class="footer-logo">
-          <img class="f-icon" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/favicon.svg" alt="" />
-          <img class="f-text" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/leecharr-text.svg" alt="Leecharr" />
+          <img class="f-icon" src="<?php echo leecharr_asset_uri('/assets/img/favicon.svg'); ?>" alt="" />
+          <img class="f-text" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>" alt="Leecharr" />
         </div>
         <p class="footer-tagline">
           BitTorrent Media Downloader &mdash; the <em>*arr</em>-family rich media client.
@@ -73,6 +28,9 @@
           >
           <a href="https://hub.docker.com/r/feeditout/leecharr" target="_blank" rel="noopener"
             ><i class="fab fa-docker"></i> Docker Hub</a
+          >
+          <a href="https://ghcr.io/dmzoneill/leecharr" target="_blank" rel="noopener"
+            ><i class="fas fa-box"></i> GHCR</a
           >
           <a href="https://wiki.servarr.com/" target="_blank" rel="noopener"
             ><i class="fas fa-book"></i> Wiki</a
@@ -139,6 +97,51 @@ fetch("https://api.github.com/repos/dmzoneill/Leecharr/releases/latest")
     var el = document.getElementById("latest-version");
     if (el) el.textContent = "v1.0.0";
   });
+
+// Google Analytics - Custom Engagement & Outbound Tracking
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof gtag !== 'function') return;
+
+  // Outbound link tracking
+  document.querySelectorAll('a[href^="http"]').forEach(function(link) {
+    if (!link.href.includes(window.location.hostname)) {
+      link.addEventListener('click', function() {
+        gtag('event', 'outbound_click', {
+          link_url: link.href,
+          link_text: (link.innerText || link.textContent || '').trim().slice(0, 100)
+        });
+      });
+    }
+  });
+
+  // Code snippet copy tracking
+  document.addEventListener('copy', function() {
+    var selection = window.getSelection().toString();
+    if (selection && selection.length > 5) {
+      var snippetType = selection.includes('docker')
+        ? 'docker'
+        : selection.includes('podman')
+          ? 'podman'
+          : selection.includes('git')
+            ? 'git'
+            : 'other';
+      gtag('event', 'code_copy', {
+        snippet_type: snippetType,
+        snippet_preview: selection.trim().slice(0, 80)
+      });
+    }
+  });
+
+  // Download section tab / button clicks
+  document.querySelectorAll('#download a, .btn-primary, .btn-secondary, .btn-action').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      gtag('event', 'cta_click', {
+        cta_text: (btn.innerText || btn.textContent || '').trim().slice(0, 50),
+        cta_href: btn.getAttribute('href') || ''
+      });
+    });
+  });
+});
 </script>
 
 <?php wp_footer(); ?>
