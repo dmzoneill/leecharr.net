@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Landing Page
  * Front Page template
@@ -6,13 +7,19 @@
  * @package Leecharr
  */
 
+require_once __DIR__ . '/inc/asset-uri.php';
+require_once __DIR__ . '/inc/docker-run.php';
+require_once __DIR__ . '/inc/markup.php';
+
 get_header();
 ?>
 
 <section id="hero">
       <div class="container text-center">
-        <img class="hero-logo" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/leecharr-skull.svg" alt="Leecharr" />
-        <img class="hero-wordmark" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/leecharr-text.svg" alt="Leecharr" />
+        <img class="hero-logo" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-skull.svg'); ?>"
+          alt="Leecharr" />
+        <img class="hero-wordmark" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>"
+          alt="Leecharr" />
         <p class="hero-tagline">
           BitTorrent Media Downloader &mdash; the <em>*arr</em>-family rich media client.
         </p>
@@ -101,73 +108,73 @@ get_header();
           <div class="carousel-inner">
             <div class="item active">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-1.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-1.png'); ?>"
                 alt="Leecharr Dashboard"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-1.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-1.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-2.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-2.png'); ?>"
                 alt="Leecharr Torrents"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-2.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-2.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-3.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-3.png'); ?>"
                 alt="Leecharr Activity"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-3.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-3.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-4.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-4.png'); ?>"
                 alt="Leecharr Indexers"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-4.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-4.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-5.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-5.png'); ?>"
                 alt="Leecharr Peer Map"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-5.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-5.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-6.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-6.png'); ?>"
                 alt="Leecharr Schedule"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-6.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-6.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-7.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-7.png'); ?>"
                 alt="Leecharr Statistics"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-7.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-7.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-8.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-8.png'); ?>"
                 alt="Leecharr Settings"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-8.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-8.png'); ?>"
                 class="carousel-img"
               />
             </div>
             <div class="item">
               <img
-                src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/slides/screen-9.png"
+                src="<?php echo leecharr_asset_uri('/assets/img/slides/screen-9.png'); ?>"
                 alt="Leecharr System"
-                data-full="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/screen-9.png"
+                data-full="<?php echo leecharr_asset_uri('/assets/img/screen-9.png'); ?>"
                 class="carousel-img"
               />
             </div>
@@ -196,55 +203,7 @@ get_header();
       </div>
     </section>
 
-    <!-- Lightbox -->
-    <div
-      id="lightboxOverlay"
-      style="
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.92);
-        z-index: 99999;
-        cursor: zoom-out;
-        text-align: center;
-      "
-    >
-      <button
-        id="lightboxClose"
-        style="
-          position: fixed;
-          top: 16px;
-          right: 20px;
-          background: #171b35;
-          border: 1px solid #2c325b;
-          color: #c7c5d3;
-          font-size: 22px;
-          width: 34px;
-          height: 34px;
-          border-radius: 4px;
-          cursor: pointer;
-          line-height: 1;
-        "
-      >
-        &times;
-      </button>
-      <img
-        id="lightboxImg"
-        src=""
-        alt=""
-        style="
-          max-width: 92%;
-          max-height: 90vh;
-          margin-top: 4vh;
-          border-radius: 4px;
-          cursor: default;
-          box-shadow: 0 8px 48px rgba(0, 0, 0, 0.7);
-        "
-      />
-    </div>
+    <?php get_template_part('template-parts/lightbox'); ?>
 
     <!-- ═══════════════════════════════ FEATURES ═══════════════════════════════ -->
     <section id="features">
@@ -335,17 +294,7 @@ get_header();
         <div class="feature-row reverse">
           <div class="feature-visual">
             <div style="width: 100%">
-              <div
-                style="
-                  font-size: 10px;
-                  color: var(--text-dim);
-                  margin-bottom: 10px;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                "
-              >
-                Protocol Stack &amp; Transport
-              </div>
+              <?php leecharr_eyebrow('Protocol Stack & Transport'); ?>
               <div class="mock-protocols">
                 <div class="mock-proto">
                   <div class="mock-proto-name">HTTP Tracker</div>
@@ -421,17 +370,7 @@ get_header();
         <div class="feature-row">
           <div class="feature-visual">
             <div style="width: 100%">
-              <div
-                style="
-                  font-size: 10px;
-                  color: var(--text-dim);
-                  margin-bottom: 10px;
-                  text-transform: uppercase;
-                  letter-spacing: 1px;
-                "
-              >
-                Client RPC Compatibility
-              </div>
+              <?php leecharr_eyebrow('Client RPC Compatibility'); ?>
               <div
                 style="
                   background: var(--bg-dark);
@@ -441,57 +380,11 @@ get_header();
                 "
               >
                 <div style="display: flex; gap: 12px; margin-bottom: 14px">
-                  <div
-                    style="
-                      flex: 1;
-                      text-align: center;
-                      padding: 12px 8px;
-                      border: 1px solid var(--accent-border);
-                      border-radius: 4px;
-                      background: var(--accent-subtle);
-                    "
-                  >
-                    <div style="font-size: 11px; color: var(--accent); font-weight: 700">
-                      qBittorrent
-                    </div>
-                    <div style="font-size: 10px; color: var(--text-dim); margin-top: 3px">
-                      WebAPI v2
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      flex: 1;
-                      text-align: center;
-                      padding: 12px 8px;
-                      border: 1px solid var(--accent-border);
-                      border-radius: 4px;
-                      background: var(--accent-subtle);
-                    "
-                  >
-                    <div style="font-size: 11px; color: var(--accent); font-weight: 700">
-                      Deluge
-                    </div>
-                    <div style="font-size: 10px; color: var(--text-dim); margin-top: 3px">
-                      JSON-RPC
-                    </div>
-                  </div>
-                  <div
-                    style="
-                      flex: 1;
-                      text-align: center;
-                      padding: 12px 8px;
-                      border: 1px solid var(--accent-border);
-                      border-radius: 4px;
-                      background: var(--accent-subtle);
-                    "
-                  >
-                    <div style="font-size: 11px; color: var(--accent); font-weight: 700">
-                      Transmission
-                    </div>
-                    <div style="font-size: 10px; color: var(--text-dim); margin-top: 3px">
-                      RPC Adapter
-                    </div>
-                  </div>
+                  <?php
+                    leecharr_client_card('qBittorrent', 'WebAPI v2');
+                    leecharr_client_card('Deluge', 'JSON-RPC');
+                    leecharr_client_card('Transmission', 'RPC Adapter');
+                    ?>
                 </div>
                 <div
                   style="
@@ -505,46 +398,12 @@ get_header();
                   Indexer &amp; Automation
                 </div>
                 <div style="display: flex; gap: 7px; flex-wrap: wrap">
-                  <span
-                    style="
-                      font-size: 11px;
-                      padding: 3px 10px;
-                      border-radius: 10px;
-                      background: var(--accent-bg);
-                      color: var(--accent);
-                    "
-                    >Prowlarr Sync</span
-                  >
-                  <span
-                    style="
-                      font-size: 11px;
-                      padding: 3px 10px;
-                      border-radius: 10px;
-                      border: 1px solid var(--border);
-                      color: var(--text-secondary);
-                    "
-                    >Torznab / Newznab</span
-                  >
-                  <span
-                    style="
-                      font-size: 11px;
-                      padding: 3px 10px;
-                      border-radius: 10px;
-                      border: 1px solid var(--border);
-                      color: var(--text-secondary);
-                    "
-                    >Webhooks</span
-                  >
-                  <span
-                    style="
-                      font-size: 11px;
-                      padding: 3px 10px;
-                      border-radius: 10px;
-                      border: 1px solid var(--border);
-                      color: var(--text-secondary);
-                    "
-                    >REST API</span
-                  >
+                  <?php
+                    leecharr_chip('Prowlarr Sync', true);
+                    leecharr_chip('Torznab / Newznab', false);
+                    leecharr_chip('Webhooks', false);
+                    leecharr_chip('REST API', false);
+                    ?>
                 </div>
               </div>
             </div>
@@ -720,243 +579,102 @@ get_header();
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="feature-title">
-                  *arr Media Enrichment
-                  <small>Posters, season banners, episode stills, ratings, and cast in WebUI</small>
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> 100% Native</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Raw filenames only</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Raw filenames only</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Raw filenames only</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Drop-in Multi-API Gateway
-                  <small
-                    >Simultaneous qBittorrent v2, Deluge &amp; Transmission RPC on port 7889</small
-                  >
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Universal 4-in-1</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> WebAPI v2 only</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> JSON-RPC only</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Transmission RPC only</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  In-Engine Media Stream Inspector
-                  <small>Pure C# EBML: 4K UHD, HDR10+, Dolby Vision, Atmos stream specs</small>
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Zero CLI dependencies</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> External ffprobe scripts</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> External ffprobe scripts</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"><i class="fas fa-times-circle"></i> None</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Private Tracker Protocol (BEP 27)
-                  <small
-                    >Strict per-swarm DHT, PEX, and LPD disablement to protect private ratios</small
-                  >
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Strict Swarm Isolation</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Supported (libtorrent)</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Supported (libtorrent)</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill yes"><i class="fas fa-check-circle"></i> Supported</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Client Whitelist Emulation
-                  <small
-                    >Configurable Peer ID &amp; User-Agent presets (qB 4.6/5.0, Deluge, etc.)</small
-                  >
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Dynamic Presets</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Locked to version</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Third-party plugin</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"><i class="fas fa-times-circle"></i> None</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Memory &amp; Cache Architecture
-                  <small>Dynamic dirty block coalescing without OS page-cache runaway bloat</small>
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Predictable RAM Cache</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-exclamation-triangle"></i> libtorrent 2.0 mmap OOM</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-exclamation-triangle"></i> Python GIL UI stalls</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> POSIX buffer cache</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Live Hardware &amp; Swarm Telemetry
-                  <small
-                    >Piece hash rates, cache hits/misses, protocol overhead, socket state</small
-                  >
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Real-time Per-Torrent</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Basic swarm rates</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Basic swarm rates</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Minimal rates</span
-                  >
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  Integrated Search &amp; Prowlarr Sync
-                  <small>Torznab/Newznab multi-indexer discovery with one-click grab</small>
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Built-in &amp; Auto-Sync</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Fragile Python plugins</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"
-                    ><i class="fas fa-times-circle"></i> Third-party plugin</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill no"><i class="fas fa-times-circle"></i> None</span>
-                </td>
-              </tr>
-              <tr>
-                <td class="feature-title">
-                  VPN Interface Binding &amp; Kill Switch
-                  <small
-                    >Binds sockets strictly to tun0/wg0; halts all traffic immediately if
-                    dropped</small
-                  >
-                </td>
-                <td class="leecharr-col">
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Automated Kill Switch</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill yes"
-                    ><i class="fas fa-check-circle"></i> Network Interface bind</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> OS routing scripts</span
-                  >
-                </td>
-                <td>
-                  <span class="status-pill partial"
-                    ><i class="fas fa-circle"></i> Bind IP only</span
-                  >
-                </td>
-              </tr>
+              <?php
+                leecharr_render_compare_body(
+                    array(
+                        array(
+                            'title' => '*arr Media Enrichment',
+                            'detail' => 'Posters, season banners, episode stills, ratings, and cast in WebUI',
+                            'cells' => array(
+                                array('yes', 'check-circle', '100% Native', true),
+                                array('no', 'times-circle', 'Raw filenames only', false),
+                                array('no', 'times-circle', 'Raw filenames only', false),
+                                array('no', 'times-circle', 'Raw filenames only', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Drop-in Multi-API Gateway',
+                            'detail' => 'Simultaneous qBittorrent v2, Deluge & Transmission RPC on port 7889',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Universal 4-in-1', true),
+                                array('partial', 'circle', 'WebAPI v2 only', false),
+                                array('partial', 'circle', 'JSON-RPC only', false),
+                                array('partial', 'circle', 'Transmission RPC only', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'In-Engine Media Stream Inspector',
+                            'detail' => 'Pure C# EBML: 4K UHD, HDR10+, Dolby Vision, Atmos stream specs',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Zero CLI dependencies', true),
+                                array('no', 'times-circle', 'External ffprobe scripts', false),
+                                array('no', 'times-circle', 'External ffprobe scripts', false),
+                                array('no', 'times-circle', 'None', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Private Tracker Protocol (BEP 27)',
+                            'detail' => 'Strict per-swarm DHT, PEX, and LPD disablement to protect private ratios',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Strict Swarm Isolation', true),
+                                array('yes', 'check-circle', 'Supported (libtorrent)', false),
+                                array('yes', 'check-circle', 'Supported (libtorrent)', false),
+                                array('yes', 'check-circle', 'Supported', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Client Whitelist Emulation',
+                            'detail' => 'Configurable Peer ID & User-Agent presets (qB 4.6/5.0, Deluge, etc.)',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Dynamic Presets', true),
+                                array('no', 'times-circle', 'Locked to version', false),
+                                array('no', 'times-circle', 'Third-party plugin', false),
+                                array('no', 'times-circle', 'None', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Memory & Cache Architecture',
+                            'detail' => 'Dynamic dirty block coalescing without OS page-cache runaway bloat',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Predictable RAM Cache', true),
+                                array('partial', 'exclamation-triangle', 'libtorrent 2.0 mmap OOM', false),
+                                array('partial', 'exclamation-triangle', 'Python GIL UI stalls', false),
+                                array('yes', 'check-circle', 'POSIX buffer cache', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Live Hardware & Swarm Telemetry',
+                            'detail' => 'Piece hash rates, cache hits/misses, protocol overhead, socket state',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Real-time Per-Torrent', true),
+                                array('partial', 'circle', 'Basic swarm rates', false),
+                                array('partial', 'circle', 'Basic swarm rates', false),
+                                array('partial', 'circle', 'Minimal rates', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'Integrated Search & Prowlarr Sync',
+                            'detail' => 'Torznab/Newznab multi-indexer discovery with one-click grab',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Built-in & Auto-Sync', true),
+                                array('partial', 'circle', 'Fragile Python plugins', false),
+                                array('no', 'times-circle', 'Third-party plugin', false),
+                                array('no', 'times-circle', 'None', false),
+                            ),
+                        ),
+                        array(
+                            'title' => 'VPN Interface Binding & Kill Switch',
+                            'detail' => 'Binds sockets strictly to tun0/wg0; halts all traffic immediately if dropped',
+                            'cells' => array(
+                                array('yes', 'check-circle', 'Automated Kill Switch', true),
+                                array('yes', 'check-circle', 'Network Interface bind', false),
+                                array('partial', 'circle', 'OS routing scripts', false),
+                                array('partial', 'circle', 'Bind IP only', false),
+                            ),
+                        ),
+                    )
+                );
+                ?>
             </tbody>
           </table>
         </div>
@@ -1050,24 +768,13 @@ get_header();
               The easiest way to run Leecharr. The official image is published to Docker Hub and
               GitHub Container Registry (GHCR).
             </p>
-            <p><strong style="color: var(--text-secondary)">Option 1: Docker Hub</strong></p>
-            <pre><code class="language-bash">docker run -d \
-  --name leecharr \
-  -p 7889:7889 \
-  -p 51413:51413 \
-  -v leecharr-config:/config \
-  -v leecharr-downloads:/downloads \
-  --restart unless-stopped \
-  feeditout/leecharr:latest</code></pre>
-            <p><strong style="color: var(--text-secondary)">Option 2: GitHub Container Registry (GHCR)</strong></p>
-            <pre><code class="language-bash">docker run -d \
-  --name leecharr \
-  -p 7889:7889 \
-  -p 51413:51413 \
-  -v leecharr-config:/config \
-  -v leecharr-downloads:/downloads \
-  --restart unless-stopped \
-  ghcr.io/dmzoneill/leecharr:latest</code></pre>
+            <?php
+            leecharr_render_docker_run('Option 1: Docker Hub', 'feeditout/leecharr:latest');
+            leecharr_render_docker_run(
+                'Option 2: GitHub Container Registry (GHCR)',
+                'ghcr.io/dmzoneill/leecharr:latest'
+            );
+            ?>
             <p>
               Then open
               <strong style="color: var(--text-primary)">http://localhost:7889</strong>
@@ -1237,7 +944,10 @@ podman-compose up -d</code></pre>
             <h4>Synology</h4>
             <ol>
               <li>Install Container Manager from the Package Center.</li>
-              <li>Pull <code>feeditout/leecharr:latest</code> from Docker Hub, or <code>ghcr.io/dmzoneill/leecharr:latest</code> from GHCR.</li>
+              <li>
+                Pull <code>feeditout/leecharr:latest</code> from Docker Hub, or
+                <code>ghcr.io/dmzoneill/leecharr:latest</code> from GHCR.
+              </li>
               <li>
                 Configure port <code>7889</code> and map volumes for <code>/config</code> and
                 <code>/downloads</code>.
