@@ -9,6 +9,10 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+require_once __DIR__ . '/inc/asset-uri.php';
+require_once __DIR__ . '/inc/docker-run.php';
+require_once __DIR__ . '/inc/markup.php';
+
 function leecharr_setup() {
     add_theme_support('automatic-feed-links');
     add_theme_support('title-tag');
