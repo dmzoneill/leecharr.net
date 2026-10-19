@@ -1,16 +1,19 @@
 <?php
+
 /**
  * Header template
  *
  * @package Leecharr
  */
+
+require_once __DIR__ . '/inc/asset-uri.php';
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
   <meta charset="<?php bloginfo('charset'); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/favicon.svg">
+  <link rel="icon" href="<?php echo leecharr_asset_uri('/assets/img/favicon.svg'); ?>" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="<?php echo leecharr_asset_uri('/assets/img/favicon.svg'); ?>">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-86X994W6SL"></script>
   <script>
@@ -40,8 +43,9 @@
         <span class="icon-bar"></span>
       </button>
       <a href="<?php echo esc_url(home_url('/#hero')); ?>" class="navbar-brand">
-        <img class="brand-icon" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/favicon.svg" alt="" />
-        <img class="brand-text" src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/leecharr-text.svg" alt="<?php bloginfo('name'); ?>" />
+        <img class="brand-icon" src="<?php echo leecharr_asset_uri('/assets/img/favicon.svg'); ?>" alt="" />
+        <img class="brand-text" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>"
+          alt="<?php bloginfo('name'); ?>" />
       </a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">
