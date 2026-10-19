@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Footer template
  *
@@ -117,7 +118,13 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('copy', function() {
     var selection = window.getSelection().toString();
     if (selection && selection.length > 5) {
-      var snippetType = selection.includes('docker') ? 'docker' : selection.includes('podman') ? 'podman' : selection.includes('git') ? 'git' : 'other';
+      var snippetType = selection.includes('docker')
+        ? 'docker'
+        : selection.includes('podman')
+          ? 'podman'
+          : selection.includes('git')
+            ? 'git'
+            : 'other';
       gtag('event', 'code_copy', {
         snippet_type: snippetType,
         snippet_preview: selection.trim().slice(0, 80)

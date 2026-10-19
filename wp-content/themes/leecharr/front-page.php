@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Template Name: Landing Page
  * Front Page template
@@ -15,8 +16,10 @@ get_header();
 
 <section id="hero">
       <div class="container text-center">
-        <img class="hero-logo" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-skull.svg'); ?>" alt="Leecharr" />
-        <img class="hero-wordmark" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>" alt="Leecharr" />
+        <img class="hero-logo" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-skull.svg'); ?>"
+          alt="Leecharr" />
+        <img class="hero-wordmark" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>"
+          alt="Leecharr" />
         <p class="hero-tagline">
           BitTorrent Media Downloader &mdash; the <em>*arr</em>-family rich media client.
         </p>
@@ -381,7 +384,7 @@ get_header();
                     leecharr_client_card('qBittorrent', 'WebAPI v2');
                     leecharr_client_card('Deluge', 'JSON-RPC');
                     leecharr_client_card('Transmission', 'RPC Adapter');
-                  ?>
+                    ?>
                 </div>
                 <div
                   style="
@@ -400,7 +403,7 @@ get_header();
                     leecharr_chip('Torznab / Newznab', false);
                     leecharr_chip('Webhooks', false);
                     leecharr_chip('REST API', false);
-                  ?>
+                    ?>
                 </div>
               </div>
             </div>
@@ -941,7 +944,10 @@ podman-compose up -d</code></pre>
             <h4>Synology</h4>
             <ol>
               <li>Install Container Manager from the Package Center.</li>
-              <li>Pull <code>feeditout/leecharr:latest</code> from Docker Hub, or <code>ghcr.io/dmzoneill/leecharr:latest</code> from GHCR.</li>
+              <li>
+                Pull <code>feeditout/leecharr:latest</code> from Docker Hub, or
+                <code>ghcr.io/dmzoneill/leecharr:latest</code> from GHCR.
+              </li>
               <li>
                 Configure port <code>7889</code> and map volumes for <code>/config</code> and
                 <code>/downloads</code>.

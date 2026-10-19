@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Header template
  *
@@ -43,7 +44,8 @@ require_once __DIR__ . '/inc/asset-uri.php';
       </button>
       <a href="<?php echo esc_url(home_url('/#hero')); ?>" class="navbar-brand">
         <img class="brand-icon" src="<?php echo leecharr_asset_uri('/assets/img/favicon.svg'); ?>" alt="" />
-        <img class="brand-text" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>" alt="<?php bloginfo('name'); ?>" />
+        <img class="brand-text" src="<?php echo leecharr_asset_uri('/assets/img/leecharr-text.svg'); ?>"
+          alt="<?php bloginfo('name'); ?>" />
       </a>
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse">

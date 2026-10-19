@@ -69,7 +69,11 @@ function leecharr_compare_cell(string $tone, string $icon, string $label, bool $
 /**
  * Comparison body. Each row is the feature plus one cell per client.
  *
- * @param array<int, array{title: string, detail: string, cells: array<int, array{0: string, 1: string, 2: string, 3: bool}>}> $rows
+ * @param array<int, array{
+ *   title: string,
+ *   detail: string,
+ *   cells: array<int, array{0: string, 1: string, 2: string, 3: bool}>
+ * }> $rows
  */
 function leecharr_render_compare_body(array $rows): void
 {
