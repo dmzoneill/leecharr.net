@@ -61,7 +61,7 @@ Nothing in the repository selects the active theme. WordPress stores that in the
 | Path               | Role                                                                                                                                                                                |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CNAME`            | Contents are `leecharr.net` (no trailing newline).                                                                                                                                  |
-| `version`          | Contents are `version=1.0.36`. The theme style sheet version stays 1.0.0. No file in this repository reads `version`.                                                               |
+| `version`          | Contents are `version=1.0.37`. The theme style sheet version stays 1.0.0. No file in this repository reads `version`.                                                               |
 | `checks.sh`        | Bash script. When `GITHUB_ENV` is set, appends `VALIDATE_CSS=false` and `VALIDATE_CSS_STYLELINT=false` to that file, then prints `0`.                                               |
 | `.prettierrc.json` | Prettier options: semicolons, double quotes, tab width 2, ES5 trailing commas, print width 100. No script in this repository runs Prettier.                                         |
 | `.ignore`          | Paths for jscpd. The file comment says Super-linter replaces a repository `.jscpd.json`, so vendored WordPress, third-party assets, screenshot manifests, and SVGs are listed here. |
