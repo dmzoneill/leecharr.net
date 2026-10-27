@@ -1,5 +1,9 @@
 # leecharr.net
 
+<p align="center">
+  <img src=".github/logo.png" alt="leecharr.net logo" width="128" />
+</p>
+
 WordPress site for the Leecharr BitTorrent media downloader. The theme style sheet describes it as a BitTorrent Media Downloader theme based on the Leecharr design, with theme URI `https://leecharr.net/`. The application itself is linked from the theme as [github.com/dmzoneill/Leecharr](https://github.com/dmzoneill/Leecharr). This repository is the site.
 
 ## Layout
