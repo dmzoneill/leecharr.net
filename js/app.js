@@ -4,5 +4,8 @@
     return;
   }
   var target = new URL("../wp-content/themes/leecharr/assets/js/app.js", loader.src);
-  document.write('<script src="' + target.href + '"></' + "script>");
+  var script = document.createElement("script");
+  script.src = target.href;
+  script.async = false;
+  loader.parentNode.insertBefore(script, loader.nextSibling);
 })();
