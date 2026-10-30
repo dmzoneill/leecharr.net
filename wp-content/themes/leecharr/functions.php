@@ -1,15 +1,19 @@
 <?php
+
 /**
  * Leecharr Theme Functions
  *
  * @package Leecharr
  */
 
-if (!defined('ABSPATH')) {
+// phpcs:disable PSR1.Files.SideEffects -- WordPress theme bootstrap file.
+
+if (defined('ABSPATH') === false) {
     exit;
 }
 
-function leecharr_setup() {
+function leecharr_setup(): void
+{
     add_theme_support('automatic-feed-links');
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -30,30 +34,65 @@ function leecharr_setup() {
 }
 add_action('after_setup_theme', 'leecharr_setup');
 
-function leecharr_scripts() {
+function leecharr_scripts(): void
+{
     $theme_version = wp_get_theme()->get('Version');
 
     // Vendor CSS
-    wp_enqueue_style('leecharr-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '3.4.1');
-    wp_enqueue_style('leecharr-fontawesome', get_template_directory_uri() . '/assets/css/fontawesome.min.css', array(), '6.0.0');
-    wp_enqueue_style('leecharr-highlight', get_template_directory_uri() . '/assets/css/highlight-github-dark.min.css', array(), '11.0.0');
-    
+    wp_enqueue_style(
+        'leecharr-bootstrap',
+        get_template_directory_uri() . '/assets/css/bootstrap.min.css',
+        array(),
+        '3.4.1'
+    );
+    wp_enqueue_style(
+        'leecharr-fontawesome',
+        get_template_directory_uri() . '/assets/css/fontawesome.min.css',
+        array(),
+        '6.0.0'
+    );
+    wp_enqueue_style(
+        'leecharr-highlight',
+        get_template_directory_uri() . '/assets/css/highlight-github-dark.min.css',
+        array(),
+        '11.0.0'
+    );
+
     // Theme main stylesheet
     wp_enqueue_style('leecharr-style', get_stylesheet_uri(), array('leecharr-bootstrap'), $theme_version);
 
     // Scripts
-    wp_enqueue_script('leecharr-bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '3.4.1', true);
-    wp_enqueue_script('leecharr-highlight-js', get_template_directory_uri() . '/assets/js/highlight.min.js', array(), '11.0.0', true);
-    wp_enqueue_script('leecharr-app', get_template_directory_uri() . '/assets/js/app.js', array('jquery', 'leecharr-bootstrap-js'), $theme_version, true);
+    wp_enqueue_script(
+        'leecharr-bootstrap-js',
+        get_template_directory_uri() . '/assets/js/bootstrap.min.js',
+        array('jquery'),
+        '3.4.1',
+        true
+    );
+    wp_enqueue_script(
+        'leecharr-highlight-js',
+        get_template_directory_uri() . '/assets/js/highlight.min.js',
+        array(),
+        '11.0.0',
+        true
+    );
+    wp_enqueue_script(
+        'leecharr-app',
+        get_template_directory_uri() . '/assets/js/app.js',
+        array('jquery', 'leecharr-bootstrap-js'),
+        $theme_version,
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'leecharr_scripts');
 
 /**
  * Synchronize the social preview image from theme assets into WordPress uploads.
  */
-function leecharr_sync_og_image() {
+function leecharr_sync_og_image(): void
+{
     $src = get_template_directory() . '/assets/img/og-image.png';
-    if (!file_exists($src)) {
+    if (file_exists($src) === false) {
         return;
     }
 
@@ -61,11 +100,11 @@ function leecharr_sync_og_image() {
     $target_dir = $upload_dir['basedir'] . '/2026/09';
     $target_file = $target_dir . '/og-image.png';
 
-    if (!file_exists($target_dir)) {
+    if (file_exists($target_dir) === false) {
         wp_mkdir_p($target_dir);
     }
 
-    if (!file_exists($target_file) || md5_file($src) !== @md5_file($target_file)) {
+    if (file_exists($target_file) === false || md5_file($src) !== @md5_file($target_file)) {
         @copy($src, $target_file);
     }
 }
@@ -74,10 +113,10 @@ add_action('init', 'leecharr_sync_og_image');
 /**
  * Filter Yoast SEO Open Graph and Twitter image URLs to use theme assets directly.
  */
-add_filter('wpseo_opengraph_image', function ($image_url) {
+add_filter('wpseo_opengraph_image', function (): string {
     return get_template_directory_uri() . '/assets/img/og-image.png';
 });
 
-add_filter('wpseo_twitter_image', function ($image_url) {
+add_filter('wpseo_twitter_image', function (): string {
     return get_template_directory_uri() . '/assets/img/og-image.png';
 });
