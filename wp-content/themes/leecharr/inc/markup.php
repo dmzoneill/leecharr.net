@@ -40,7 +40,7 @@ function leecharr_client_card(string $name, string $detail): void
  */
 function leecharr_chip(string $label, bool $accent): void
 {
-    if ($accent) {
+    if ($accent === true) {
         $style = 'font-size: 11px; padding: 3px 10px; border-radius: 10px;'
             . ' background: var(--accent-bg); color: var(--accent);';
     } else {
@@ -58,7 +58,7 @@ function leecharr_chip(string $label, bool $accent): void
  */
 function leecharr_compare_cell(string $tone, string $icon, string $label, bool $highlight): void
 {
-    $cell = $highlight ? ' class="leecharr-col"' : '';
+    $cell = $highlight === true ? ' class="leecharr-col"' : '';
     echo '<td' . $cell . '>'
         . '<span class="status-pill ' . htmlspecialchars($tone, ENT_QUOTES, 'UTF-8') . '">'
         . '<i class="fas fa-' . htmlspecialchars($icon, ENT_QUOTES, 'UTF-8') . '"></i> '
